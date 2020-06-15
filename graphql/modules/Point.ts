@@ -1,18 +1,34 @@
-import { extendType, objectType } from '@nexus/schema'
+import { extendType, inputObjectType, objectType } from '@nexus/schema'
+import { Context } from '../context'
 
 export const Point = objectType({
   name: 'Point',
   definition: (t) => {
-    t.model.id('id')
-    t.model.string('image')
-    t.model.string('name')
-    t.model.string('email')
-    t.model.string('whatsapp')
-    t.model.float('latitude')
-    t.model.float('longitude')
-    t.model.string('city')
-    t.model.string('uf')
-    // t.model.items({})
+    t.model.id()
+    t.model.image()
+    t.model.name()
+    t.model.email()
+    t.model.whatsapp()
+    t.model.latitude()
+    t.model.longitude()
+    t.model.city()
+    t.model.uf()
+    t.model.items()
+  },
+})
+
+const createOnePointInput = inputObjectType({
+  name: 'PointCreateInput',
+  definition: (t) => {
+    t.string('image', { nullable: false })
+    t.string('name', { nullable: false })
+    t.string('email', { nullable: false })
+    t.string('whatsapp', { nullable: false })
+    t.float('latitude', { nullable: false })
+    t.float('longitude', { nullable: false })
+    t.string('city', { nullable: false })
+    t.string('uf', { nullable: false })
+    t.list.int('itemIds', { nullable: false })
   },
 })
 
@@ -26,51 +42,41 @@ export const PointQueryResolver = extendType({
 export const PoinMutationResolver = extendType({
   type: 'Mutation',
   definition: (t) => {
-    // t.
+    t.field('createOnePoint', {
+      type: 'Point',
+      args: { data: createOnePointInput },
+      resolve: async (root, args, ctx: Context) => {
+        const {
+          image,
+          name,
+          email,
+          whatsapp,
+          latitude,
+          longitude,
+          city,
+          uf,
+          itemIds,
+        } = args.data
+        const serializedItems = itemIds.map((id: number) => ({ id }))
+        const createdPoint = await ctx.prisma.point.create({
+          data: {
+            image,
+            name,
+            email,
+            whatsapp,
+            latitude,
+            longitude,
+            city,
+            uf,
+            items: {
+              connect: serializedItems,
+            },
+          },
+          include: { items: true },
+        })
+
+        return createdPoint
+      },
+    })
   },
 })
-
-// export const AddPointInput = inputObjectType({
-//   name: 'AddPointInput',
-//   definition(t) {
-//     t.string('image', {
-//       required: true,
-//       default:
-//         'https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
-//     })
-//     t.string('name', { required: true })
-//     t.string('email', { required: true })
-//     t.string('whatsapp', { required: true })
-//     t.float('latitude', { required: true })
-//     t.float('longitude', { required: true })
-//     t.string('city', { required: true })
-//     t.string('uf', { required: true })
-//     t.list.int('item_ids', { required: true })
-//   },
-// })
-
-// export const PointMutationResolver = extendType({
-//   type: 'Mutation',
-//   definition: (t) => {
-//     t.field('addPoint', {
-//       type: 'Point',
-//       nullable: true,
-//       args: {
-//         data: AddPointInput,
-//       },
-//       resolve: async (
-//         root,
-//         args: { data: typeof AddPointInput },
-//         context: Context
-//       ) => {
-//         const createdPoint = await context.prisma.point.create({
-//           data: {
-//             city: args
-//           },
-//         })
-
-//         return null
-//       },
-//     })
-//   },
-// })

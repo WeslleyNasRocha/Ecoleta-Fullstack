@@ -11,9 +11,9 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
-    "nexus:generate": "cross-env NODE_ENV=development ts-node graphql/schema.ts",
+    "nexus:generate": "cross-env NODE_ENV=development ts-node --transpile-only --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" graphql/schema.ts",
     "prisma:migrate": "prisma migrate save --experimental && prisma migrate up --experimental",
-    "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:seed": "ts-node --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" prisma/seed.ts",
     "prisma:generate": "prisma generate"
   },
   "husky": {
@@ -44,6 +44,7 @@
     "@prisma/cli": "2.0.0",
     "@testing-library/react": "^10.0.1",
     "@types/jest": "^25.1.4",
+    "@types/micro-cors": "0.1.1",
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.27",
     "@types/testing-library__react": "^10.0.0",
