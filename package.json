@@ -15,7 +15,8 @@
     "prisma:migrate": "prisma migrate save --experimental && prisma migrate up --experimental",
     "prisma:seed": "ts-node --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" prisma/seed.ts",
     "prisma:generate": "prisma generate",
-    "generate": "npm -s run prisma:generate && npm -s run nexus:generate"
+    "generate": "npm -s run prisma:generate && npm -s run nexus:generate",
+    "postinstall": "yarn run generate"
   },
   "husky": {
     "hooks": {
