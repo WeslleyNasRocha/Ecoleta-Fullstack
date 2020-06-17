@@ -7,8 +7,11 @@ export const Item = objectType({
     t.model.image()
     t.model.title()
     t.model.points()
-    t.string('image_url', {
-      resolve: (root) => `/static/${root.image}`,
+
+    t.string('imageUrl', {
+      resolve: (root) => {
+        return `/static/${root.image}`
+      },
     })
   },
 })

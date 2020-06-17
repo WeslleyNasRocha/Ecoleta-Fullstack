@@ -1,5 +1,4 @@
-import { extendType, inputObjectType, objectType } from '@nexus/schema'
-import { Context } from '../context'
+import { extendType, objectType } from '@nexus/schema'
 
 export const Point = objectType({
   name: 'Point',
@@ -17,66 +16,18 @@ export const Point = objectType({
   },
 })
 
-const createOnePointInput = inputObjectType({
-  name: 'PointCreateInput',
-  definition: (t) => {
-    t.string('image', { nullable: false })
-    t.string('name', { nullable: false })
-    t.string('email', { nullable: false })
-    t.string('whatsapp', { nullable: false })
-    t.float('latitude', { nullable: false })
-    t.float('longitude', { nullable: false })
-    t.string('city', { nullable: false })
-    t.string('uf', { nullable: false })
-    t.list.int('itemIds', { nullable: false })
-  },
-})
-
 export const PointQueryResolver = extendType({
   type: 'Query',
   definition: (t) => {
     t.crud.point()
+    t.crud.points()
+    // t.field("")
   },
 })
 
 export const PoinMutationResolver = extendType({
   type: 'Mutation',
   definition: (t) => {
-    t.field('createOnePoint', {
-      type: 'Point',
-      args: { data: createOnePointInput },
-      resolve: async (root, args, ctx: Context) => {
-        const {
-          image,
-          name,
-          email,
-          whatsapp,
-          latitude,
-          longitude,
-          city,
-          uf,
-          itemIds,
-        } = args.data
-        const serializedItems = itemIds.map((id: number) => ({ id }))
-        const createdPoint = await ctx.prisma.point.create({
-          data: {
-            image,
-            name,
-            email,
-            whatsapp,
-            latitude,
-            longitude,
-            city,
-            uf,
-            items: {
-              connect: serializedItems,
-            },
-          },
-          include: { items: true },
-        })
-
-        return createdPoint
-      },
-    })
+    t.crud.createOnePoint()
   },
 })
