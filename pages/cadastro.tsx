@@ -270,4 +270,4 @@ const Cadastro = () => {
   )
 }
 
-export default withApollo(Cadastro)
+export default withApollo(Cadastro, { ssr: false })
