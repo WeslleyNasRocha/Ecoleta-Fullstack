@@ -11,12 +11,12 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest --watch",
     "test-all": "yarn lint && yarn type-check && yarn test",
-    "nexus:generate": "cross-env NODE_ENV=development ts-node --transpile-only --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" graphql/schema.ts",
-    "prisma:migrate": "prisma migrate save --experimental && prisma migrate up --experimental",
-    "prisma:seed": "ts-node --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" prisma/seed.ts",
-    "prisma:generate": "prisma generate",
+    "postinstall": "yarn run generate",
     "generate": "npm -s run prisma:generate && npm -s run nexus:generate",
-    "postinstall": "yarn run generate"
+    "nexus:generate": "cross-env NODE_ENV=development ts-node --transpile-only --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" graphql/schema.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate save --experimental && prisma migrate up --experimental",
+    "prisma:seed": "ts-node --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\" prisma/seed.ts"
   },
   "husky": {
     "hooks": {
