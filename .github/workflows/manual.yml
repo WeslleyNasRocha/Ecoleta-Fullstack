@@ -46,4 +46,4 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
             
       - name: Testing
-        run: yarn run test
+        run: yarn run test:staged
