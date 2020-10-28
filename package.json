@@ -10,6 +10,7 @@
     "format": "prettier --write **/*.{js,ts,tsx}",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest --watch",
+    "test:staged": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
     "postinstall": "yarn run generate",
     "generate": "npm -s run prisma:generate && npm -s run nexus:generate",
