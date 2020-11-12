@@ -10,3 +10,7 @@ jobs:
 
       - name: seila
         run: echo ${{ github.ref }}
+      
+      - name: test branch name
+        if: ${{ github.ref }} != 'refs/heads/master'
+        run: echo "::error::Not master branch"
