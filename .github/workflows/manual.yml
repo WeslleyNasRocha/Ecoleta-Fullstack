@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
         
       - name: teste
-        run: echo ${{ github.ref }}
+        run: echo "${{ github.ref }}"
         
       - name: Cache
         uses: actions/cache@v2.1.2
