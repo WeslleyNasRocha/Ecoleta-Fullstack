@@ -15,7 +15,7 @@ jobs:
         run: echo ${{ github.ref }}
       
       - name: test branch name
-        if: contains('refs/heads/master', github.ref)
+        if: github.ref != refs/heads/master
         run: |
           echo "::error::Not master branch"
           exit 1
