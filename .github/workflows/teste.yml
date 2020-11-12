@@ -13,4 +13,6 @@ jobs:
       
       - name: test branch name
         if: ${{ github.ref }} != 'refs/heads/master'
-        run: echo "::error::Not master branch"
+        run: |
+          echo "::error::Not master branch"
+          exit 1
