@@ -26,4 +26,4 @@ jobs:
         id: branch-name
 
       - name: seila
-        run: echo ${{ jobs.branch-name.outputs.branch }}
+        run: echo ${{ steps.branch-name.outputs.branch }}
