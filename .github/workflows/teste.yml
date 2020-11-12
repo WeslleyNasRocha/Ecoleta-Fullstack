@@ -1,0 +1,12 @@
+name: Teste workflow
+
+on: workflow_dispatch
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: seila
+        run: echo ${{ github.ref }}
