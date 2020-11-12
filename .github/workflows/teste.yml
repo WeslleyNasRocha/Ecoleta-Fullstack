@@ -1,6 +1,9 @@
 name: Teste workflow
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    branches:
+      - master
 
 jobs:
   setup:
