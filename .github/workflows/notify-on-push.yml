@@ -13,7 +13,7 @@ jobs:
           webhook: https://discord.com/api/webhooks/770344060950937620/6aLNXJQPYpEfbdp6DE05p2OwEMvtxKG7NZmMqnBST6F8KjjCQyVY5935mOiAq2FrXNAv
           title: 'Pull request: ${{github.event.pull_request.url}}'
           description: |
-            Ae <@&${Vanilla}> galerinha do mal o [${{ github.event.sender.login }}](${{ github.event.sender.html_url }}) acabou de criar um magnifico ***[pull_request](${{github.event.pull_request.url}})*** e está precisando daquela fortalecida com seu review :pr_pfvr:
+            Ae \@Vanilla galerinha do mal o [${{ github.event.sender.login }}](${{ github.event.sender.html_url }}) acabou de criar um magnifico ***[pull_request](${{github.event.pull_request.url}})*** e está precisando daquela fortalecida com seu review :pr_pfvr:
 
             **[${{github.event.pull_request.title}}](${{github.event.pull_request.url}})**
           image: https://media1.tenor.com/images/3f86a16da3c774ef4b15a6f8052725a8/tenor.gif
