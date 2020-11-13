@@ -15,8 +15,9 @@ jobs:
           title: 'Pull request: ${{github.event.pull_request.url}}'
           avatar_url: ${{ github.event.sender.avatar_url }}
           description: |
-            Ae @Vanilla acabei de criar um magnifico ***pull_request*** e estou precisando daquela fortalecida com seu review :grimacing:
-            [${{github.event.pull_request.title}}](${{github.event.pull_request.url}})
+            # Ae @Vanilla acabei de criar um magnifico ***pull_request*** e estou precisando daquela fortalecida com seu review :grimacing:
+            
+            ## [${{github.event.pull_request.title}}](${{github.event.pull_request.url}})
           noprefix: true
           nodetail: true
           color: 0x59656f
