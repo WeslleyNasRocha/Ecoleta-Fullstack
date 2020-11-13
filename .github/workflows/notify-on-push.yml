@@ -18,7 +18,7 @@ jobs:
             **[${{github.event.pull_request.title}}](${{github.event.pull_request.url}})**
           image: https://media1.tenor.com/images/3f86a16da3c774ef4b15a6f8052725a8/tenor.gif
           thumbnail: https://media1.tenor.com/images/3f86a16da3c774ef4b15a6f8052725a8/tenor.gif
-          pre_message: "<@&776894890667409429>"
+          # pre_message: "<@&776894890667409429>"
           noprefix: true
           nodetail: true
           color: 0xF5CDEB
