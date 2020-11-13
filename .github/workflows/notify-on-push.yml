@@ -19,7 +19,7 @@ jobs:
             **[${{github.event.pull_request.title}}](${{github.event.pull_request.url}})**
           noprefix: true
           nodetail: true
-          color: 0xFAF33E
+          color: 0xF5CDEB
 
   # dump:
   #   runs-on: ubuntu-latest
