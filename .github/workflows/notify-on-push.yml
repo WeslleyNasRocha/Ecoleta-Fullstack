@@ -12,12 +12,11 @@ jobs:
         if: always()
         with:
           webhook: https://discord.com/api/webhooks/770344060950937620/6aLNXJQPYpEfbdp6DE05p2OwEMvtxKG7NZmMqnBST6F8KjjCQyVY5935mOiAq2FrXNAv
-          title: 'Pull request: [${{github.event.pull_request.title}}](${{github.event.pull_request.url}})'
-          avatar_url: ${{github.event.sender.avatar_url}}
+          title: 'Pull request: ${{github.event.pull_request.url}}'
+          avatar_url: ${{ github.event.sender.avatar_url }}
           description: |
             Ae @Vanilla acabei de criar um magnifico ***pull_request*** e estou precisando daquela fortalecida com seu review :grimacing:
             [${{github.event.pull_request.title}}](${{github.event.pull_request.url}})
-            https://media1.tenor.com/images/3f86a16da3c774ef4b15a6f8052725a8/tenor.gif
           noprefix: true
           nodetail: true
           color: 0x59656f
