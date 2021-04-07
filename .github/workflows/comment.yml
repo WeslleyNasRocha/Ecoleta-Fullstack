@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: comment
 
 # Controls when the action will run. 
 on: issue_comment
@@ -16,4 +16,4 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo ${{ github }}
+        run: echo ${{ toJson(github) }}
