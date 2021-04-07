@@ -3,7 +3,11 @@
 name: comment
 
 # Controls when the action will run. 
-on: issue_comment
+on: 
+  issue_comment:
+  commit_comment:
+  pull_request_review_comment:
+  pull_request_review:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
