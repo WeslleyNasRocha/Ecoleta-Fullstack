@@ -1,6 +1,6 @@
 <h1 align="center"> 
   <img alt="Ecoleta" title="Ecoleta" src=".github/ecoleta.svg" width="220px" />
-	<h4>🚧 NextLevelWeek 1.0 🚀 em construção... 🚧</h4>
+	<h4>🚧 NextLevelWeek 1.0 🚀</h4>
 </h1>
 
 <h1 align="center">
