@@ -1,0 +1,52 @@
+name: Notify
+
+on: pull_request
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord notification end of deployment
+        uses: WeslleyNasRocha/actions-status-discord@1f96d5cddd4ff5596359d8f8c965cf39044be903
+        if: always()
+        with:
+          webhook: https://discord.com/api/webhooks/770344060950937620/6aLNXJQPYpEfbdp6DE05p2OwEMvtxKG7NZmMqnBST6F8KjjCQyVY5935mOiAq2FrXNAv
+          title: 'Pull request: ${{github.event.pull_request.url}}'
+          description: |
+            Ae <@&776894890667409429> galerinha do mal o [${{ github.event.sender.login }}](${{ github.event.sender.html_url }}) acabou de criar um magnifico ***[pull_request](${{github.event.pull_request.url}})*** e está precisando daquela fortalecida com seu review :pr_pfvr:
+
+            **[${{github.event.pull_request.title}}](${{github.event.pull_request.url}})**
+          image: https://media1.tenor.com/images/3f86a16da3c774ef4b15a6f8052725a8/tenor.gif
+          thumbnail: https://media1.tenor.com/images/3f86a16da3c774ef4b15a6f8052725a8/tenor.gif
+          # pre_message: "<@&776894890667409429>"
+          noprefix: true
+          nodetail: true
+          color: 0xF5CDEB
+
+  # dump:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Dump GitHub context
+  #       env:
+  #         GITHUB_CONTEXT: ${{ toJson(github) }}
+  #       run: echo "$GITHUB_CONTEXT"
+  #     - name: Dump job context
+  #       env:
+  #         JOB_CONTEXT: ${{ toJson(job) }}
+  #       run: echo "$JOB_CONTEXT"
+  #     - name: Dump steps context
+  #       env:
+  #         STEPS_CONTEXT: ${{ toJson(steps) }}
+  #       run: echo "$STEPS_CONTEXT"
+  #     - name: Dump runner context
+  #       env:
+  #         RUNNER_CONTEXT: ${{ toJson(runner) }}
+  #       run: echo "$RUNNER_CONTEXT"
+  #     - name: Dump strategy context
+  #       env:
+  #         STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+  #       run: echo "$STRATEGY_CONTEXT"
+  #     - name: Dump matrix context
+  #       env:
+  #         MATRIX_CONTEXT: ${{ toJson(matrix) }}
+  #       run: echo "$MATRIX_CONTEXT"
