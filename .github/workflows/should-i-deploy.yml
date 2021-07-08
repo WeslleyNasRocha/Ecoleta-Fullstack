@@ -1,0 +1,16 @@
+name: should-i-deploy-today
+
+on:
+  schedule:
+    - cron: 0 0 * * 1-5
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: weslleynasrocha/should-i-deploy-today@v1.0.1
+      with:
+        timezone: america/sao_paulo
